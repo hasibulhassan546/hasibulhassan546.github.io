@@ -4,16 +4,16 @@ import profileImage from "@/assets/profile.jpg";
 
 const Sidebar = () => {
   return (
-    <Card className="bg-card border-border rounded-3xl p-8 sticky top-8 h-fit shadow-elegant">
+    <Card className="bg-card border-border rounded-3xl p-8 lg:sticky lg:top-8 h-fit shadow-elegant">
       <div className="flex flex-col items-center space-y-6">
         {/* Profile Image */}
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-br from-primary to-primary/50 rounded-3xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
           <div className="relative bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl p-1">
-            <img 
-              src={profileImage} 
-              alt="Hasibul Hassan" 
-              className="w-full h-auto rounded-3xl object-cover"
+            <img
+              src={profileImage}
+              alt="Hasibul Hassan"
+              className="w-full max-w-64 h-auto rounded-3xl object-cover"
             />
           </div>
         </div>

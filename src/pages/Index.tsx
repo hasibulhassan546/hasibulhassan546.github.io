@@ -30,18 +30,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Sidebar */}
-          <div className="lg:col-span-4">
+          <div className="md:col-span-4 lg:col-span-4">
             <Sidebar />
           </div>
 
           {/* Main Content */}
-          <div className="lg:col-span-8">
-            <Card className="bg-card border-border rounded-3xl shadow-elegant min-h-[600px]">
+          <div className="md:col-span-8 lg:col-span-8">
+            <Card className="bg-card border-border rounded-3xl shadow-elegant min-h-0">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <div className="border-b border-border px-8 pt-8">
-                  <TabsList className="bg-transparent w-full justify-start gap-2 h-auto p-0 border-0">
+                <div className="border-b border-border px-4 pt-4 md:px-8 md:pt-8">
+                  <TabsList className="bg-transparent w-full justify-start gap-2 h-auto p-0 border-0 overflow-x-auto">
                     <TabsTrigger 
                       value="about" 
                       className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-6 py-3 text-base font-medium transition-all hover:text-primary/70 relative group"
