@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/hasibulhassan546.github.io/',  // <-- use your repo name here
+  base: '/',  // <-- use '/' for local development
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

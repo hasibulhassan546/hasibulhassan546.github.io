@@ -30,38 +30,38 @@ const Sidebar = () => {
         <div className="w-full h-px bg-border"></div>
 
         {/* Contact Info */}
-        <div className="w-full space-y-4">
-          <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
-            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
-              <Mail className="w-5 h-5 text-primary" />
+        <div className="w-full space-y-3 sm:space-y-4">
+          <div className="flex items-start gap-3 sm:gap-4 p-2 sm:p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+            <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Email</p>
-              <a 
-                href="mailto:hasibulgreen@gmail.com" 
-                className="text-sm text-foreground hover:text-primary transition-colors break-all"
+              <a
+                href="mailto:hasibulgreen@gmail.com"
+                className="text-xs sm:text-sm text-foreground hover:text-primary transition-colors break-all"
               >
                 hasibulgreen@gmail.com
               </a>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
-            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
-              <Phone className="w-5 h-5 text-primary" />
+          <div className="flex items-start gap-3 sm:gap-4 p-2 sm:p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+            <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
               <div className="space-y-1">
-                <a 
-                  href="tel:+8801849896090" 
-                  className="block text-sm text-foreground hover:text-primary transition-colors"
+                <a
+                  href="tel:+8801849896090"
+                  className="block text-xs sm:text-sm text-foreground hover:text-primary transition-colors"
                 >
                   +880 1849 896090
                 </a>
-                <a 
-                  href="tel:+8801733795278" 
-                  className="block text-sm text-foreground hover:text-primary transition-colors"
+                <a
+                  href="tel:+8801733795278"
+                  className="block text-xs sm:text-sm text-foreground hover:text-primary transition-colors"
                 >
                   +880 1733 795278
                 </a>
@@ -69,23 +69,23 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
-            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
-              <MapPin className="w-5 h-5 text-primary" />
+          <div className="flex items-start gap-3 sm:gap-4 p-2 sm:p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+            <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Location</p>
-              <p className="text-sm text-foreground">Dhaka, Bangladesh</p>
+              <p className="text-xs sm:text-sm text-foreground">Dhaka, Bangladesh</p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
-            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
-              <Calendar className="w-5 h-5 text-primary" />
+          <div className="flex items-start gap-3 sm:gap-4 p-2 sm:p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+            <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center shadow-sm group-hover:shadow-glow transition-shadow">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Graduation</p>
-              <p className="text-sm text-foreground">2025</p>
+              <p className="text-xs sm:text-sm text-foreground">2025</p>
             </div>
           </div>
         </div>
