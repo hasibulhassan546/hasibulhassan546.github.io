@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -143,6 +143,8 @@ const Index = () => {
                             "Link Building",
                             "Backlinks",
                             "Technical SEO",
+                            "Google Search Console",
+                            "Google Analytics",
                           ]
                         },
                         {
@@ -360,11 +362,10 @@ const Index = () => {
                     >
                       <Button
                         size="lg"
-                        variant="outline"
-                        className="border-2 border-primary bg-primary/5 text-primary hover:bg-primary/10 transition-all hover:scale-105"
+                        variant="ghost"
                       >
                         <Mail className="w-5 h-5 mr-2" />
-                        Email Me
+                        Contact me
                       </Button>
                     </a>
 
@@ -377,7 +378,6 @@ const Index = () => {
                       <a href="/hasibul.vcf" download className="no-underline">
                         <Button variant="ghost">Download vCard</Button>
                       </a>
-                      <ContactForm />
                     </div>
                   </div>
                 </TabsContent>
@@ -396,7 +396,7 @@ const Index = () => {
                           <CardContent className="p-6">
                             <div className="flex items-start gap-4">
                               <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                                <Mail className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                                <Mail className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                               </div>
                               <div className="flex-1">
                                 <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Email</h4>
@@ -415,7 +415,7 @@ const Index = () => {
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                            <Phone className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                            <Phone className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                           </div>
                           <div className="flex-1">
                             <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Phone & WhatsApp</h4>
@@ -445,7 +445,7 @@ const Index = () => {
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4">
                             <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Facebook className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                              <Facebook className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                             </div>
                             <div className="flex-1">
                               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Facebook</h4>
@@ -463,7 +463,7 @@ const Index = () => {
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4">
                             <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Instagram className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                              <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                             </div>
                             <div className="flex-1">
                               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Instagram</h4>
@@ -481,7 +481,7 @@ const Index = () => {
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4">
                             <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Linkedin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                              <Linkedin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                             </div>
                             <div className="flex-1">
                               <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">LinkedIn</h4>
@@ -498,7 +498,7 @@ const Index = () => {
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                            <MapPin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                            <MapPin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                           </div>
                           <div className="flex-1 space-y-3">
                             <div>
@@ -512,6 +512,23 @@ const Index = () => {
                               </p>
                             </div>
                           </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Google Map */}
+                    <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 md:col-span-2 group overflow-hidden">
+                      <CardContent className="p-0">
+                        <div className="w-full h-80">
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            loading="lazy"
+                            allowFullScreen=""
+                            referrerPolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.017!2d90.428!3d23.7049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s!2sDharmik%20Para%20Jame%20Masjid!5e0!3m2!1sen!2sbd!4v1701768000000&q=Dharmik+Para+Jame+Masjid&markers=color:red|23.7049,90.428"
+                          ></iframe>
                         </div>
                       </CardContent>
                     </Card>

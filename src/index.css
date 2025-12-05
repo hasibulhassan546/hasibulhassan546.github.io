@@ -2,96 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern Tech-Inspired Design System */
 
 @layer base {
   :root {
+    /* Dark futuristic background */
     --background: 240 7% 7%;
     --foreground: 0 0% 88%;
 
+    /* Glass morphism cards */
     --card: 240 5% 12%;
     --card-foreground: 0 0% 88%;
 
     --popover: 240 5% 12%;
     --popover-foreground: 0 0% 88%;
 
-    --primary: 200 100% 50%;
+    /* Cyan/Neon primary accent */
+    --primary: 180 100% 50%;
     --primary-foreground: 240 7% 7%;
 
+    /* Secondary dark layer */
     --secondary: 240 5% 15%;
     --secondary-foreground: 0 0% 88%;
 
+    /* Muted elements */
     --muted: 240 5% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 200 100% 50%;
+    /* Accent colors - Green */
+    --accent: 130 100% 50%;
     --accent-foreground: 240 7% 7%;
 
+    /* Destructive - kept for UI feedback */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 5% 18%;
     --input: 240 5% 18%;
-    --ring: 200 100% 50%;
+    --ring: 180 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(200 100% 50%), hsl(200 100% 70%));
-    --gradient-card: linear-gradient(135deg, hsl(240 5% 12%), hsl(240 5% 15%));
+    /* Custom design tokens for modern aesthetic */
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50%), hsl(130 100% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(180 100% 50%), hsl(280 100% 50%));
+    --gradient-card: linear-gradient(135deg, rgba(26, 26, 46, 0.6), rgba(26, 26, 46, 0.4));
     --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 30px hsl(200 100% 50% / 0.15);
+    --shadow-glow: 0 0 30px hsl(180 100% 50% / 0.25);
+    --shadow-glow-intense: 0 0 60px hsl(180 100% 50% / 0.4);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elegant: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --sidebar-background: 240 5% 12%;
     --sidebar-foreground: 0 0% 88%;
-    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary: 180 100% 50%;
     --sidebar-primary-foreground: 240 7% 7%;
     --sidebar-accent: 240 5% 15%;
     --sidebar-accent-foreground: 0 0% 88%;
     --sidebar-border: 240 5% 18%;
-    --sidebar-ring: 200 100% 50%;
+    --sidebar-ring: 180 100% 50%;
   }
 
   .dark {
     --background: 240 7% 7%;
     --foreground: 0 0% 88%;
-
     --card: 240 5% 12%;
     --card-foreground: 0 0% 88%;
-
     --popover: 240 5% 12%;
     --popover-foreground: 0 0% 88%;
-
-    --primary: 200 100% 50%;
+    --primary: 180 100% 50%;
     --primary-foreground: 240 7% 7%;
-
     --secondary: 240 5% 15%;
     --secondary-foreground: 0 0% 88%;
-
     --muted: 240 5% 15%;
     --muted-foreground: 0 0% 65%;
-
-    --accent: 200 100% 50%;
+    --accent: 130 100% 50%;
     --accent-foreground: 240 7% 7%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 240 5% 18%;
     --input: 240 5% 18%;
-    --ring: 200 100% 50%;
-
+    --ring: 180 100% 50%;
     --sidebar-background: 240 5% 12%;
     --sidebar-foreground: 0 0% 88%;
-    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary: 180 100% 50%;
     --sidebar-primary-foreground: 240 7% 7%;
     --sidebar-accent: 240 5% 15%;
     --sidebar-accent-foreground: 0 0% 88%;
     --sidebar-border: 240 5% 18%;
-    --sidebar-ring: 200 100% 50%;
+    --sidebar-ring: 180 100% 50%;
   }
 }
 
@@ -102,5 +101,150 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-poppins;
+    background: linear-gradient(135deg, hsl(240 7% 7%) 0%, hsl(240 5% 12%) 100%);
+    position: relative;
+  }
+
+  /* Typography enhancements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    background: linear-gradient(135deg, hsl(0 0% 100%), hsl(180 100% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    @apply leading-relaxed;
+    color: hsl(0 0% 65%);
+  }
+
+  a {
+    @apply transition-all duration-300;
+    color: hsl(180 100% 50%);
+  }
+
+  a:hover {
+    color: hsl(130 100% 50%);
+    text-shadow: 0 0 15px hsl(180 100% 50% / 0.5);
+  }
+}
+
+@layer components {
+  /* Glass Card Component */
+  .glass-card {
+    @apply backdrop-blur-md bg-opacity-40 border border-opacity-20 rounded-2xl transition-all duration-300;
+    background: rgba(26, 26, 46, 0.6);
+    border-color: rgba(0, 255, 255, 0.2);
+  }
+
+  .glass-card:hover {
+    @apply border-opacity-100;
+    background: rgba(26, 26, 46, 0.8);
+    border-color: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 40px hsl(180 100% 50% / 0.2);
+    transform: translateY(-5px);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(0 0% 100%), hsl(180 100% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-secondary {
+    background: linear-gradient(135deg, hsl(180 100% 50%), hsl(130 100% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-cyan {
+    text-shadow: 0 0 20px hsl(180 100% 50% / 0.6);
+    box-shadow: 0 0 30px hsl(180 100% 50% / 0.3);
+  }
+
+  .glow-green {
+    text-shadow: 0 0 20px hsl(130 100% 50% / 0.6);
+    box-shadow: 0 0 30px hsl(130 100% 50% / 0.3);
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.4);
+  }
+
+  /* Fade-in animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  /* Badge enhancement */
+  .badge {
+    @apply backdrop-blur-sm transition-all duration-300;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: hsl(180 100% 50%);
+  }
+
+  .badge:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 20px hsl(180 100% 50% / 0.4);
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(180 100% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(180 100% 50% / 0.6);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 }
