@@ -15,6 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        'josefin': ['Josefin Sans', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
       },
       colors: {
@@ -65,6 +66,7 @@ export default {
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-accent': 'var(--gradient-accent)',
+        'dark-gradient': 'linear-gradient(135deg, #0F0F14 0%, #12141B 100%)',
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',

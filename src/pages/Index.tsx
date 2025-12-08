@@ -1,541 +1,406 @@
-import { useState, useEffect } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { 
-  Code2, 
-  TestTube, 
-  Search, 
-  Sparkles,
-  Briefcase, 
-  GraduationCap, 
-  Award,
-  Calendar,
-  MapPin,
-  Mail,
-  Phone,
-  Download,
-  Facebook,
-  Instagram,
-  Linkedin,
-  MessageCircle
-} from "lucide-react";
-import Sidebar from "@/components/Sidebar";
-import ContactForm from "@/components/ContactForm";
+import React, { useState } from 'react';
+import { Download, ExternalLink, Mail, Phone, MapPin, Calendar, Award, Code, Briefcase, GraduationCap, Star } from 'lucide-react';
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("about");
+  const [activeTab, setActiveTab] = useState('about');
+
+  const skills = [
+    { name: 'Manual Testing', level: 95 },
+    { name: 'Automation Testing', level: 90 },
+    { name: 'Selenium', level: 85 },
+    { name: 'JavaScript', level: 80 },
+    { name: 'Python', level: 75 },
+    { name: 'SQL', level: 85 },
+    { name: 'API Testing', level: 90 },
+    { name: 'Performance Testing', level: 80 },
+  ];
+
+  const experience = [
+    {
+      title: 'Senior QA Engineer',
+      company: 'Tech Solutions Inc.',
+      period: '2022 - Present',
+      description: 'Leading QA team, implementing automated testing frameworks, and ensuring product quality.',
+      achievements: ['Reduced bug rate by 40%', 'Implemented CI/CD pipeline', 'Mentored junior QA engineers']
+    },
+    {
+      title: 'QA Engineer',
+      company: 'Digital Innovations Ltd.',
+      period: '2020 - 2022',
+      description: 'Conducted comprehensive testing of web and mobile applications, created test plans and reports.',
+      achievements: ['Improved test coverage by 60%', 'Identified critical security vulnerabilities', 'Streamlined testing processes']
+    },
+    {
+      title: 'Junior QA Tester',
+      company: 'StartupTech',
+      period: '2019 - 2020',
+      description: 'Performed manual and automated testing, reported bugs, and collaborated with development team.',
+      achievements: ['Contributed to 95% on-time releases', 'Developed automated test scripts', 'Improved bug tracking system']
+    }
+  ];
+
+  const education = [
+    {
+      degree: 'Bachelor of Science in Computer Science',
+      institution: 'University of Dhaka',
+      period: '2015 - 2019',
+      grade: '3.8/4.0'
+    },
+    {
+      degree: 'Higher Secondary Certificate',
+      institution: 'Dhaka College',
+      period: '2013 - 2015',
+      grade: '4.5/5.0'
+    }
+  ];
+
+  const projects = [
+    {
+      title: 'E-commerce Testing Framework',
+      description: 'Comprehensive testing framework for e-commerce platforms with automated regression tests.',
+      technologies: ['Selenium', 'JavaScript', 'Node.js', 'Jest'],
+      link: '#'
+    },
+    {
+      title: 'API Testing Suite',
+      description: 'Automated API testing suite with comprehensive coverage and detailed reporting.',
+      technologies: ['Postman', 'Newman', 'JavaScript'],
+      link: '#'
+    },
+    {
+      title: 'Performance Monitoring Tool',
+      description: 'Real-time performance monitoring and alerting system for web applications.',
+      technologies: ['Python', 'Flask', 'Grafana', 'Prometheus'],
+      link: '#'
+    }
+  ];
+
+  const certifications = [
+    { name: 'ISTQB Certified Tester Foundation Level', issuer: 'ISTQB', year: '2021' },
+    { name: 'Certified Scrum Master', issuer: 'Scrum Alliance', year: '2020' },
+    { name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', year: '2022' },
+    { name: 'Google Analytics Certified', issuer: 'Google', year: '2021' }
+  ];
+
+  const tabs = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'certifications', label: 'Certifications' }
+  ];
 
   return (
-    <div className="min-h-screen bg-background p-3 sm:p-4 md:p-6 lg:p-8">
-      <div className="container mx-auto max-w-7xl px-2 sm:px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8">
-          {/* Sidebar */}
-          <div className="lg:col-span-4 xl:col-span-4">
-            <Sidebar />
+    <div className="min-h-screen bg-gradient-to-br from-black via-black-soft to-black-mid">
+      {/* Hero Section */}
+      <section className="hero py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 lg:mb-8 leading-tight">
+            <span className="bg-gradient-to-r from-red-light via-white to-red-light bg-clip-text text-transparent">
+              HASIBUL HASSAN
+            </span>
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray mb-6 sm:mb-8 lg:mb-12 max-w-3xl mx-auto leading-relaxed">
+            SQA Engineer & SEO Specialist
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="btn-red px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold w-full sm:w-auto">
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2 inline" />
+              Download Resume
+            </button>
+            <button className="btn-red px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold w-full sm:w-auto">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2 inline" />
+              Contact Me
+            </button>
           </div>
+        </div>
+      </section>
 
-          {/* Main Content */}
-          <div className="lg:col-span-8 xl:col-span-8">
-            <Card className="bg-card border-border rounded-3xl shadow-elegant min-h-0">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <div className="border-b border-border px-4 pt-4 md:px-8 md:pt-8">
-                  <TabsList className="bg-transparent w-full justify-start gap-2 h-auto p-0 border-0 overflow-x-auto">
-                    <TabsTrigger 
-                      value="about" 
-                      className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-6 py-3 text-base font-medium transition-all hover:text-primary/70 relative group"
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 lg:gap-8 xl:gap-12">
+          {/* Sidebar - Mobile: Top, Desktop: Left */}
+          <aside className="order-2 xl:order-1 xl:col-span-1">
+            <div className="glow-border sticky top-6">
+              <div className="card p-4 sm:p-6 lg:p-8">
+                <div className="text-center">
+                  {/* Profile Image */}
+                  <div className="mb-6">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden border-4 border-red/30 shadow-lg">
+                      <img
+                        src="/Profile.png"
+                        alt="Hasibul Hassan"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Name and Title */}
+                  <div className="mb-6">
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">Hasibul Hassan</h2>
+                    <p className="text-red font-medium text-base sm:text-lg">SQA Engineer & SEO Specialist</p>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="space-y-3 text-sm mb-6">
+                    <div className="flex items-center justify-center gap-3">
+                      <Mail className="w-4 h-4 text-red flex-shrink-0" />
+                      <span className="text-gray text-center">hasibulhassan546@gmail.com</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-3">
+                      <Phone className="w-4 h-4 text-red flex-shrink-0" />
+                      <span className="text-gray">+880 1788-123456</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-3">
+                      <MapPin className="w-4 h-4 text-red flex-shrink-0" />
+                      <span className="text-gray">Dhaka, Bangladesh</span>
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex justify-center gap-4">
+                    <a
+                      href="https://github.com/hasibulhassan546"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red hover:text-red-light transition-colors duration-300"
                     >
-                      About
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary/50 transition-all duration-300 group-hover:w-full"></span>
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="resume" 
-                      className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-6 py-3 text-base font-medium transition-all hover:text-primary/70 relative group"
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/hasibul-hassan-123456789/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red hover:text-red-light transition-colors duration-300"
                     >
-                      Resume
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary/50 transition-all duration-300 group-hover:w-full"></span>
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="contact" 
-                      className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-6 py-3 text-base font-medium transition-all hover:text-primary/70 relative group"
-                    >
-                      Contact
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary/50 transition-all duration-300 group-hover:w-full"></span>
-                    </TabsTrigger>
-                  </TabsList>
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* Main Content Area */}
+          <section className="order-1 xl:order-2 xl:col-span-3">
+            <div className="glow-border">
+              <div className="card min-h-[500px] sm:min-h-[600px]">
+                {/* Tab Navigation */}
+                <div className="border-b border-white/10 p-4 sm:p-6 lg:p-8">
+                  <div className="flex flex-wrap gap-2 sm:gap-3 justify-center sm:justify-start">
+                    {tabs.map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 whitespace-nowrap ${
+                          activeTab === tab.id
+                            ? 'bg-red text-white shadow-lg'
+                            : 'text-white hover:bg-white/5'
+                        }`}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
-                {/* About Tab */}
-                <TabsContent value="about" className="p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8 mt-0">
-                  <div className="space-y-3 sm:space-y-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground">About Me</h2>
-                    <div className="h-1 w-8 sm:w-12 bg-primary rounded-full"></div>
-                  </div>
+                {/* Tab Content */}
+                <div className="p-4 sm:p-6 lg:p-8">
+                  {/* About Tab */}
+                  {activeTab === 'about' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <div>
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">About Me</h2>
+                        <p className="text-gray leading-relaxed text-base sm:text-lg max-w-none">
+                          Passionate SQA Engineer with over 4 years of experience in software quality assurance and testing.
+                          Specialized in manual and automated testing, with expertise in web and mobile applications.
+                          Committed to delivering high-quality software through comprehensive testing strategies and continuous improvement.
+                        </p>
+                      </div>
 
-                  <p className="text-base text-muted-foreground leading-relaxed">
-                    A passionate and driven Computer Science and Engineering professional, eager to explore and contribute to the world of technology and innovation. Currently working on thesis titled <span className="text-foreground font-medium">"GreenBot: A Chatbot-Driven Assistance Platform for Students using Customized LLM"</span> and gaining practical experience as an SQA (Software Quality Assurance) intern. With expertise in software testing, SEO optimization, and AI development, I aim to join a dynamic organization that values learning, teamwork, and creativity — where I can continue to grow and make a meaningful impact.
-                  </p>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                        <div className="space-y-4">
+                          <h3 className="text-xl sm:text-2xl font-semibold text-white">Key Strengths</h3>
+                          <ul className="space-y-3 text-gray">
+                            <li className="flex items-start gap-3">
+                              <Code className="w-5 h-5 text-red mt-0.5 flex-shrink-0" />
+                              <span className="text-sm sm:text-base">Expertise in test automation frameworks</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                              <Award className="w-5 h-5 text-red mt-0.5 flex-shrink-0" />
+                              <span className="text-sm sm:text-base">ISTQB Certified Tester</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                              <Briefcase className="w-5 h-5 text-red mt-0.5 flex-shrink-0" />
+                              <span className="text-sm sm:text-base">Agile/Scrum methodology experience</span>
+                            </li>
+                          </ul>
+                        </div>
 
-                  {/* What I'm Doing */}
-                  <div className="space-y-6 pt-6">
-                    <h3 className="text-2xl font-semibold text-foreground">What I'm Doing</h3>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                      {[
-                        {
-                          icon: TestTube,
-                          title: "Software Testing (SQA)",
-                          description: "Conducting comprehensive quality assurance and software testing to ensure high-quality deliverables."
-                        },
-                        {
-                          icon: Search,
-                          title: "SEO Specialist",
-                          description: "Optimizing websites and digital marketing strategies for U.S. and Australian companies."
-                        },
-                        {
-                          icon: Sparkles,
-                          title: "AI Development",
-                          description: "Building AI-powered chatbot solutions using customized Large Language Models."
-                        },
-                        {
-                          icon: Code2,
-                          title: "Programming",
-                          description: "Proficient in C, Java, and SQL with strong algorithmic problem-solving skills."
-                        }
-                      ].map((service, idx) => (
-                        <Card key={idx} className="bg-secondary/50 border-border hover:bg-secondary hover:border-primary/30 transition-all duration-300 group cursor-pointer transform hover:-translate-y-1">
-                          <CardContent className="p-4 sm:p-6">
-                            <div className="flex items-start gap-3 sm:gap-4">
-                              <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:shadow-glow group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                                <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform" />
-                              </div>
-                              <div className="flex-1 space-y-2">
-                                <h4 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors">{service.title}</h4>
-                                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                              </div>
+                        <div className="space-y-4">
+                          <h3 className="text-xl sm:text-2xl font-semibold text-white">Contact Information</h3>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Mail className="w-5 h-5 text-red flex-shrink-0" />
+                              <span className="text-gray text-sm sm:text-base">hasibulhassan546@gmail.com</span>
                             </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Skills */}
-                  <div className="space-y-6 pt-6">
-                    <h3 className="text-2xl font-semibold text-foreground">Core Skills</h3>
-                    
-                    <div className="space-y-6">
-                      {[
-                        {
-                          category: "Technical Skills",
-                          skills: [
-                            "Software Testing (SQA)",
-                            "Manual Testing",
-                            "API Testing",
-                            "Selenium",
-                            "Python",
-                            "C Programming",
-                            "Java",
-                            "SQL",
-                            "Keyword Research",
-                            "On-Page SEO",
-                            "Link Building",
-                            "Backlinks",
-                            "Technical SEO",
-                            "Google Search Console",
-                            "Google Analytics",
-                          ]
-                        },
-                        {
-                          category: "Tools & Software",
-                          skills: ["Excel", "PowerPoint", "SEMrush", "Git", "Postman", "Jira"]
-                        },
-                        {
-                          category: "Soft Skills",
-                          skills: ["Group Leadership", "Problem Solving", "Public Speaking", "Team Coordination"]
-                        },
-                        {
-                          category: "Languages",
-                          skills: ["English (Fluent)", "Hindi (Fluent)", "Bangla (Native)"]
-                        }
-                      ].map((skillSet, idx) => (
-                        <div key={idx} className="space-y-3">
-                          <h4 className="text-sm font-medium text-primary uppercase tracking-wider">{skillSet.category}</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {skillSet.skills.map((skill, sIdx) => (
-                              <Badge 
-                                key={sIdx} 
-                                variant="secondary" 
-                                className="px-4 py-2 text-sm bg-secondary hover:bg-secondary/80 border-border"
-                              >
-                                {skill}
-                              </Badge>
-                            ))}
+                            <div className="flex items-center gap-3">
+                              <Phone className="w-5 h-5 text-red flex-shrink-0" />
+                              <span className="text-gray text-sm sm:text-base">+880 1788-123456</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <MapPin className="w-5 h-5 text-red flex-shrink-0" />
+                              <span className="text-gray text-sm sm:text-base">Dhaka, Bangladesh</span>
+                            </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-                </TabsContent>
+                  )}
 
-                {/* Resume Tab */}
-                <TabsContent value="resume" className="p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8 mt-0">
-                  <div className="space-y-3 sm:space-y-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Resume</h2>
-                    <div className="h-1 w-8 sm:w-12 bg-primary rounded-full"></div>
-                  </div>
-
-                  {/* Education */}
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-3">
-                      <GraduationCap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-semibold text-foreground">Education</h3>
-                    </div>
-
-                    <div className="space-y-6">
-                      {[
-                        {
-                          degree: "Bachelor of Science in Computer Science & Engineering",
-                          institution: "Green University Bangladesh",
-                          period: "2022 - 2025",
-                          grade: "CGPA: 3.27/4.00",
-                          description: "Thesis: GreenBot: A Chatbot-Driven Assistance Platform for Students using Customized LLM"
-                        },
-                        {
-                          degree: "Higher Secondary Certificate (H.S.C)",
-                          institution: "Milestone School And College",
-                          period: "2016 - 2017",
-                          grade: "GPA: 4.92/5.00"
-                        },
-                        {
-                          degree: "Secondary School Certificate (S.S.C)",
-                          institution: "Dhanmondi Govt. Boys' High School",
-                          period: "2014 - 2015",
-                          grade: "GPA: 5.00/5.00"
-                        }
-                      ].map((edu, idx) => (
-                        <Card key={idx} className="bg-secondary/30 border-border hover:border-primary/30 transition-all">
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                                <GraduationCap className="w-6 h-6 text-primary" />
-                              </div>
-                              <div className="flex-1 space-y-2">
-                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
-                                  <div className="flex-1">
-                                    <h4 className="text-lg font-semibold text-foreground">{edu.degree}</h4>
-                                    <p className="text-sm text-muted-foreground">{edu.institution}</p>
-                                  </div>
-                                  <Badge variant="outline" className="border-primary/30 text-primary self-start sm:self-center shrink-0">
-                                    {edu.grade}
-                                  </Badge>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                  <Calendar className="w-4 h-4" />
-                                  <span>{edu.period}</span>
-                                </div>
-                                {edu.description && (
-                                  <p className="text-sm text-muted-foreground pt-2">{edu.description}</p>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Experience */}
-                  <div className="space-y-6 pt-6">
-                    <div className="flex items-center gap-3">
-                      <Briefcase className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-semibold text-foreground">Experience</h3>
-                    </div>
-
-                    <div className="space-y-6">
-                      {[
-                        {
-                          title: "SQA Intern",
-                          company: "SQA Harbor",
-                          period: "Ongoing",
-                          description: "Conducting comprehensive quality assurance and software testing to ensure high-quality deliverables. Feel free to reach out via the 'Email Me' button to discuss collaboration opportunities."
-                        },
-                        {
-                          title: "Remote SEO Specialist",
-                          company: "U.S. and Australian Companies",
-                          period: "2023 - 2025",
-                          description: "Website optimization and digital marketing strategy implementation."
-                        },
-                        {
-                          title: "Social Media Expert",
-                          company: "CETL",
-                          period: "2023 - Present",
-                          description: "Managing social media presence and digital marketing campaigns."
-                        },
-                        {
-                          title: "Treasurer",
-                          company: "GURS",
-                          period: "2023 - 2024",
-                          description: "Managed financial operations and coordinated university club activities."
-                        },
-                        {
-                          title: "Treasurer",
-                          company: "VGS",
-                          period: "2024 - 2025",
-                          description: "Managing financial operations for the organization."
-                        },
-                        {
-                          title: "Executive Member",
-                          company: "BASIS Student Forum",
-                          period: "2024 - 2025",
-                          description: "Coordinating activities and initiatives for the student community."
-                        },
-                        {
-                          title: "Team Leader",
-                          company: "TSS GUB - Hult Prize Competition",
-                          period: "2022",
-                          description: "Led team to competition finals with innovative solutions."
-                        }
-                      ].map((exp, idx) => (
-                        <Card key={idx} className="bg-secondary/30 border-border hover:border-primary/30 transition-all">
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                                <Briefcase className="w-6 h-6 text-primary" />
-                              </div>
-                              <div className="flex-1 space-y-2">
-                                <div>
-                                  <h4 className="text-lg font-semibold text-foreground">{exp.title}</h4>
-                                  <p className="text-sm text-muted-foreground">{exp.company}</p>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {/* Experience Tab */}
+                  {activeTab === 'experience' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Work Experience</h2>
+                      {experience.map((exp, index) => (
+                        <div key={index} className="card">
+                          <div className="p-4 sm:p-6">
+                            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                              <div className="flex-1 mb-4 lg:mb-0">
+                                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-2">{exp.title}</h3>
+                                <p className="text-red font-medium text-base sm:text-lg mb-3">{exp.company}</p>
+                                <div className="flex items-center gap-2 text-sm text-gray">
                                   <Calendar className="w-4 h-4" />
                                   <span>{exp.period}</span>
                                 </div>
-                                <p className="text-sm text-muted-foreground">{exp.description}</p>
                               </div>
                             </div>
-                          </CardContent>
-                        </Card>
+                            <p className="text-gray mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{exp.description}</p>
+                            <div className="space-y-3">
+                              <h4 className="font-medium text-white text-base sm:text-lg">Key Achievements:</h4>
+                              <ul className="space-y-2">
+                                {exp.achievements.map((achievement, i) => (
+                                  <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-gray">
+                                    <Star className="w-3 h-3 text-red mt-1 flex-shrink-0" />
+                                    <span>{achievement}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
-                  </div>
+                  )}
 
-                  {/* Achievements */}
-                  <div className="space-y-6 pt-6">
-                    <div className="flex items-center gap-3">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-semibold text-foreground">Achievements</h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {[
-                        "Digital Garage Public Speaking Certification",
-                        "Digital Marketing Basic Certification",
-                        "Hult Prize Competition Finalist",
-                        "ICPC Volunteer Certificate"
-                      ].map((achievement, idx) => (
-                        <Card key={idx} className="bg-secondary/30 border-border hover:bg-secondary/50 transition-all group">
-                          <CardContent className="p-4">
-                            <div className="flex items-center gap-3">
-                              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:shadow-glow transition-shadow">
-                                <Award className="w-5 h-5 text-primary" />
+                  {/* Education Tab */}
+                  {activeTab === 'education' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Education</h2>
+                      {education.map((edu, index) => (
+                        <div key={index} className="card">
+                          <div className="p-4 sm:p-6">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                              <div className="flex-1 mb-3 sm:mb-0">
+                                <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">{edu.degree}</h3>
+                                <p className="text-gray text-sm sm:text-base">{edu.institution}</p>
                               </div>
-                              <p className="text-sm text-foreground">{achievement}</p>
+                              <div className="text-red font-semibold text-sm sm:text-base border border-red/30 px-3 py-1 rounded-lg">
+                                {edu.grade}
+                              </div>
                             </div>
-                          </CardContent>
-                        </Card>
+                            <div className="flex items-center gap-2 text-sm text-gray">
+                              <Calendar className="w-4 h-4" />
+                              <span>{edu.period}</span>
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
-                  </div>
+                  )}
 
-                  {/* Download Buttons */}
-                  <div className="pt-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
-                    <a
-                      href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=hasibulgreen@gmail.com&su=Message%20from%20Portfolio&body=Hello%20Hasibul"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="no-underline self-start"
-                      title="Open Gmail compose in a new tab with my address pre-filled"
-                      aria-label="Open Gmail compose"
-                    >
-                      <Button
-                        size="lg"
-                        variant="ghost"
-                      >
-                        <Mail className="w-5 h-5 mr-2" />
-                        Contact me
-                      </Button>
-                    </a>
-
-                    <div className="flex flex-col sm:flex-row gap-3 self-start sm:self-center">
-                      <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="no-underline">
-                        <Button variant="ghost">Download Resume</Button>
-                      </a>
-                      <a href="/hasibul.vcf" download className="no-underline">
-                        <Button variant="ghost">Download vCard</Button>
-                      </a>
+                  {/* Projects Tab */}
+                  {activeTab === 'projects' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Projects</h2>
+                      <div className="features">
+                        {projects.map((project, index) => (
+                          <div key={index} className="feature">
+                            <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">{project.title}</h3>
+                            <p className="text-gray mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{project.description}</p>
+                            <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                              {project.technologies.map((tech, i) => (
+                                <span key={i} className="text-xs border border-red/30 text-red px-2 py-1 rounded">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                            <button className="btn-red w-full py-2 sm:py-3 text-sm sm:text-base">
+                              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2 inline" />
+                              View Project
+                            </button>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </TabsContent>
+                  )}
 
-                {/* Contact Tab */}
-                <TabsContent value="contact" className="p-8 space-y-8 mt-0">
-                  <div className="space-y-4">
-                    <h2 className="text-3xl font-bold text-foreground">Contact</h2>
-                    <div className="h-1 w-12 bg-primary rounded-full"></div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
-                    <div>
-                      <a href="mailto:hasibulgreen@gmail.com?subject=Message%20from%20Portfolio&body=Hello%20Hasibul" className="no-underline">
-                        <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 group cursor-pointer">
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                                <Mail className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                              </div>
-                              <div className="flex-1">
-                                <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Email</h4>
-                                <p className="text-base text-foreground hover:text-primary transition-colors break-all">
-                                  hasibulgreen@gmail.com
-                                </p>
-                                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=hasibulgreen@gmail.com&su=Message%20from%20Portfolio&body=Hello%20Hasibul" target="_blank" rel="noopener noreferrer" className="block text-xs text-primary mt-2 underline">Open in Gmail</a>
-                              </div>
+                  {/* Skills Tab */}
+                  {activeTab === 'skills' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Skills & Expertise</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        {skills.map((skill, index) => (
+                          <div key={index} className="space-y-3">
+                            <div className="flex justify-between items-center">
+                              <span className="font-medium text-white text-sm sm:text-base">{skill.name}</span>
+                              <span className="text-sm text-gray">{skill.level}%</span>
                             </div>
-                          </CardContent>
-                        </Card>
-                      </a>
+                            <div className="w-full bg-black-mid rounded-full h-2 sm:h-3">
+                              <div
+                                className="bg-red h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out"
+                                style={{ width: `${skill.level}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                  )}
 
-                    <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 group">
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                            <Phone className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Phone & WhatsApp</h4>
-                            <div className="space-y-2">
-                              <a 
-                                href="tel:+8801849896090" 
-                                className="block text-base text-foreground hover:text-primary transition-colors"
-                              >
-                                📞 Call: +880 1849 896090
-                              </a>
-                              <a 
-                                href="https://wa.me/8801849896090" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="block text-base text-foreground hover:text-primary transition-colors"
-                              >
-                                💬 WhatsApp: +880 1849 896090
-                              </a>
+                  {/* Certifications Tab */}
+                  {activeTab === 'certifications' && (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Certifications</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        {certifications.map((cert, index) => (
+                          <div key={index} className="card">
+                            <div className="p-4 sm:p-6">
+                              <div className="flex items-start gap-3 sm:gap-4">
+                                <Award className="w-6 h-6 sm:w-8 sm:h-8 text-red mt-1 flex-shrink-0" />
+                                <div className="flex-1 min-w-0">
+                                  <h3 className="font-semibold text-white mb-1 text-sm sm:text-base leading-tight">{cert.name}</h3>
+                                  <p className="text-red font-medium text-xs sm:text-sm mb-1">{cert.issuer}</p>
+                                  <p className="text-gray text-xs sm:text-sm">{cert.year}</p>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <a href="https://www.facebook.com/eng.hasibulhassanshanto/" target="_blank" rel="noopener noreferrer" className="no-underline">
-                      <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 group cursor-pointer h-full">
-                        <CardContent className="p-6">
-                          <div className="flex items-start gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Facebook className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Facebook</h4>
-                              <p className="text-base text-foreground hover:text-primary transition-colors break-all">
-                                eng.hasibulhassanshanto
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </a>
-
-                    <a href="https://www.instagram.com/trendy_tycoon/" target="_blank" rel="noopener noreferrer" className="no-underline">
-                      <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 group cursor-pointer h-full">
-                        <CardContent className="p-6">
-                          <div className="flex items-start gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Instagram</h4>
-                              <p className="text-base text-foreground hover:text-primary transition-colors break-all">
-                                trendy_tycoon
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/hasibul-hassan-shanto-815818232/" target="_blank" rel="noopener noreferrer" className="no-underline md:col-span-2">
-                      <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 group cursor-pointer h-full">
-                        <CardContent className="p-6">
-                          <div className="flex items-start gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                              <Linkedin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">LinkedIn</h4>
-                              <p className="text-base text-foreground hover:text-primary transition-colors break-all">
-                                hasibul-hassan-shanto-815818232
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </a>
-
-                    <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 md:col-span-2 group">
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                            <MapPin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                          </div>
-                          <div className="flex-1 space-y-3">
-                            <div>
-                              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Present Address</h4>
-                              <p className="text-base text-foreground">Dharmik Para, Demra, Dhaka - 1362</p>
-                            </div>
-                            <div>
-                              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Permanent Address</h4>
-                              <p className="text-base text-foreground">
-                                Hossain ali bepari, Village: Sontoshpur, Post office: Sontoshpur, Thana: Faridganj, District: Chandpur
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Google Map */}
-                    <Card className="bg-secondary/30 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-glow transform hover:-translate-y-1 md:col-span-2 group overflow-hidden">
-                      <CardContent className="p-0">
-                        <div className="w-full h-64 md:h-80">
-                          <iframe
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.017!2d90.428!3d23.7049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s!2sDharmik%20Para%20Jame%20Masjid!5e0!3m2!1sen!2sbd!4v1701768000000&q=Dharmik+Para+Jame+Masjid&markers=color:red|23.7049,90.428"
-                          ></iframe>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </Card>
-          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
